@@ -8,8 +8,9 @@ all : rpms
 clean:
 	rm -rf planex-build-root deps
 
-planex-build-root:
+planex-build-root: SPECS/* SOURCES/*
 	planex-configure
+	touch planex-build-root
 
 ############################################################################
 # RPM build rules

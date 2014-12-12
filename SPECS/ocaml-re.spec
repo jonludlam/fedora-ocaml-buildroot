@@ -22,12 +22,11 @@ BuildRequires:  ocaml-ocamldoc
 %description 
 
 A pure OCaml regular expression library. Supports Perl-style regular
-expressions (module Re_perl), Posix extended regular expressions
-(module Re_posix), Emacs-style regular expressions (module Re_emacs),
-and shell-style file globbing (module Re_glob).  It is also possible
-to build regular expressions by combining simpler regular expressions
-(module Re). There is also a subset of the PCRE interface available in
-the Re.pcre library.
+expressions, Posix extended regular expressions, Emacs-style regular
+expressions, and shell-style file globbing.  It is also possible to
+build regular expressions by combining simpler regular expressions.
+There is also a subset of the PCRE interface available in the Re.pcre
+library.
 
 
 %package        devel
@@ -43,11 +42,11 @@ developing applications that use %{name}.
 %patch0 -p1
 
 %build
-ocaml setup.ml -configure --destdir %{buildroot}
+ocaml setup.ml -configure --destdir $RPM_BUILD_ROOT
 make
 
 %install
-export OCAMLFIND_DESTDIR=%{buildroot}/%{_libdir}/ocaml
+export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
 mkdir -p $OCAMLFIND_DESTDIR
 make install
 
@@ -74,7 +73,7 @@ make install
 %{_libdir}/ocaml/re/*.mli
 
 %changelog 
-* Fri Dec 3 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-2 
+* Fri Dec 12 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-2 
 - Minor updates to the SPEC file. Now rpmlint gives no errors or
   warnings.
 
