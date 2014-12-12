@@ -1,0 +1,14 @@
+--- /dev/null	2014-12-11 19:09:04.241477143 +0000
++++ ocaml-re-ocaml-re-1.2.2/lib/re_pcre.mli	2014-12-12 00:25:42.448144948 +0000
+@@ -0,0 +1,11 @@
++type regexp = Re.re
++val regexp : ?flags:[< `CASELESS ] list -> string -> Re.re
++val extract : rex:Re.re -> string -> string array
++val exec : rex:Re.re -> ?pos:int -> string -> Re.substrings
++val get_substring : Re.substrings -> int -> string
++val get_substring_ofs : Re.substrings -> int -> int * int
++val pmatch : rex:Re.re -> string -> bool
++val substitute : rex:Re.re -> subst:(string -> string) -> string -> string
++val split : rex:Re.re -> string -> string list
++val string_unsafe_sub : string -> int -> int -> string
++val quote : string -> string

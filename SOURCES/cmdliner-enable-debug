@@ -1,0 +1,11 @@
+diff --git a/_tags b/_tags
+index ce1b7ed..b456e71 100644
+--- a/_tags
++++ b/_tags
+@@ -1,3 +1,4 @@
+ <**/*.ml> : bin_annot, annot
+ <src> : include
+-<test> : include
+\ No newline at end of file
++<test> : include
++true : debug
