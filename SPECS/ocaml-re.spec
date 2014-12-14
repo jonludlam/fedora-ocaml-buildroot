@@ -74,8 +74,7 @@ make install
 
 %changelog 
 * Fri Dec 12 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-2 
-- Minor updates to the SPEC file. Now rpmlint gives no errors or
-  warnings.
+- Minor updates to the SPEC file. Now rpmlint gives no errors.
 
 * Sat Jun  7 2014 David Scott <dave.scott@citrix.com> - 1.2.2-1
 - Update to 1.2.2
