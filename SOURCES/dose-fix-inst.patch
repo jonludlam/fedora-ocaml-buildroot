@@ -1,0 +1,15 @@
+--- Makefile.orig	2014-12-15 19:41:34.198877543 +0000
++++ Makefile	2014-12-15 19:41:54.372876870 +0000
+@@ -178,9 +178,9 @@
+ 	for f in $$(ls *.$(OCAMLEXT)) ; do \
+ 	  install $(INSTALLOPTS) $$f $(BINDIR)/$${f%.$(OCAMLEXT)} ; \
+ 	done
+-	@ln -s $(BINDIR)/distcheck $(BINDIR)/debcheck
+-	@ln -s $(BINDIR)/distcheck $(BINDIR)/rpmcheck
+-	@ln -s $(BINDIR)/distcheck $(BINDIR)/eclipsecheck
++	@ln -s distcheck $(BINDIR)/debcheck
++	@ln -s distcheck $(BINDIR)/rpmcheck
++	@ln -s distcheck $(BINDIR)/eclipsecheck
+ 	@echo "Install dose librairies to $(LIBDIR)"
+ 	@echo "Install dose binaries to $(BINDIR)"
+ 

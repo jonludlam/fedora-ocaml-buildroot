@@ -1,0 +1,12 @@
+diff --git a/_tags b/_tags
+index 8b6d02b..b036dde 100644
+--- a/_tags
++++ b/_tags
+@@ -2,4 +2,5 @@
+ <src> : include
+ <test> : include
+ <test/utftrip.{byte,native}> : use_unix
+-<test/examples.{byte,native}> : use_unix
+\ No newline at end of file
++<test/examples.{byte,native}> : use_unix
++true : debug
