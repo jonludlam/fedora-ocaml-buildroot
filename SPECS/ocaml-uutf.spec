@@ -76,7 +76,7 @@ cp _build/src/*.cmxs ${DEST}
 %endif
 
 %changelog
-* Fri Jan 15 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-4
+* Fri Jan 16 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-4
 - Minor fixes for Fedora
 
 * Mon May 19 2014 Euan Harris <euan.harris@citrix.com> - 0.9.3-3
