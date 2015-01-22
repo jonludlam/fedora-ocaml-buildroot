@@ -6,10 +6,10 @@
 
 Name:           opam
 Version:        1.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A source-based package manager for OCaml
 License:        LGPLv3 with exceptions
-URL:            http://opam.ocaml.org
+URL:            https://opam.ocaml.org/
 Source0:        https://github.com/ocaml/opam/archive/1.2.0/opam-1.2.0.tar.gz
 Patch0:         opam-lib-install-fix
 BuildRequires:  ocaml
@@ -28,6 +28,10 @@ BuildRequires:  ocaml-zip-devel
 BuildRequires:  ocaml-ocamlgraph-devel
 BuildRequires:  zlib-devel
 BuildRequires:  chrpath
+Requires:       curl
+Requires:       tar
+Requires:       unzip
+Requires:       rsync 
 
 %description
 OPAM is a source-based package manager for OCaml. It supports multiple
@@ -105,6 +109,10 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 
 
 %changelog 
+* Thu Jan 22 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-2
+- Add Requires lines suggested by Anil Madhavapeddy
+- Update URL to use https rather than http
+
 * Wed Dec 17 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-1
 - Initial package
 
