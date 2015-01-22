@@ -34,8 +34,8 @@ OPAM is a source-based package manager for OCaml. It supports multiple
 simultaneous compiler installations, flexible package constraints, and
 a Git-friendly development workflow.
 
-%package        -n ocaml-opam-lib
-Summary:	An OCaml Library to manipulate OPAM packages
+%package -n ocaml-opam-lib
+Summary: An OCaml Library to manipulate OPAM packages
 
 %description -n ocaml-opam-lib
 OPAM is a source-based package manager for OCaml. It supports multiple
@@ -45,11 +45,11 @@ a Git-friendly development workflow.
 This package contains the runtime components of the core OPAM
 libraries for use in other OCaml programs.
 
-%package        -n ocaml-opam-lib-devel
-Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+%package -n ocaml-opam-lib-devel
+Summary: Development files for %{name}
+Requires: %{name} = %{version}-%{release}
 
-%description    -n ocaml-opam-lib-devel
+%description -n ocaml-opam-lib-devel
 OPAM is a source-based package manager for OCaml. It supports multiple
 simultaneous compiler installations, flexible package constraints, and
 a Git-friendly development workflow.
@@ -64,7 +64,7 @@ programs.
 %patch0 -p1
 
 %build
-./configure --prefix /usr --libdir %{_libdir}
+%configure
 make
 make man
 
