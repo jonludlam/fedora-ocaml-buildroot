@@ -6,28 +6,26 @@
 
 Name:           ocaml-re
 Version:        1.2.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A regular expression library for OCaml
 
 License:        LGPLv2 with exceptions
 URL:            https://github.com/ocaml/ocaml-re
 Source0:        https://github.com/ocaml/%{name}/archive/ocaml-re-%{version}/ocaml-re-%{version}.tar.gz
 # Without this, the re_pcre.ml file was installed. The problem is already fixed in master.
-Patch0:         ocaml-re-add-pcre-mli
+Patch0:         ocaml-re-add-pcre-mli.patch
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ocamldoc
 
 %description 
-
 A pure OCaml regular expression library. Supports Perl-style regular
 expressions, Posix extended regular expressions, Emacs-style regular
 expressions, and shell-style file globbing.  It is also possible to
 build regular expressions by combining simpler regular expressions.
 There is also a subset of the PCRE interface available in the Re.pcre
 library.
-
 
 %package        devel
 Summary:        Development files for %{name}
@@ -73,6 +71,10 @@ make install
 %{_libdir}/ocaml/re/*.mli
 
 %changelog 
+* Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-3
+- Change patch filename to have .patch suffix
+- Remove whitespace
+
 * Fri Dec 12 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-2 
 - Minor updates to the SPEC file. Now rpmlint gives no errors.
 

@@ -1,12 +1,6 @@
-%ifarch %{ocaml_native_compiler}
-%global native_compiler 1
-%else
-%global native_compiler 0
-%endif
-
 Name:           ocaml-jsonm
 Version:        0.9.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Non-blocking streaming JSON codec for OCaml
 License:        BSD
 URL:            http://erratique.ch/software/jsonm
@@ -25,10 +19,8 @@ without a complete in-memory representation of the data.
 The alternative "uncut" codec also processes whitespace and
 (non-standard) JSON with JavaScript comments.
 
-Jsonm is made of a single module and depends on [Uutf][1]. It is
+Jsonm is made of a single module and depends on Uutf. It is
 distributed under the BSD license.
-
-[1]: http://erratique.ch/software/uutf
 
 %package        devel
 Summary:        Development files for %{name}
@@ -85,6 +77,10 @@ rm %{buildroot}/%{_bindir}/ocamltweets
 %endif
 
 %changelog
+* Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.1-3
+- Remove unused define
+- Sanitised the description
+
 * Mon Jan 19 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.1-2
 - Minor fixes
 

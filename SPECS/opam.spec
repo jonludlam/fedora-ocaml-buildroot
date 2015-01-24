@@ -6,12 +6,12 @@
 
 Name:           opam
 Version:        1.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A source-based package manager for OCaml
 License:        LGPLv3 with exceptions
 URL:            https://opam.ocaml.org/
 Source0:        https://github.com/ocaml/opam/archive/1.2.0/opam-1.2.0.tar.gz
-Patch0:         opam-lib-install-fix
+Patch0:         opam-lib-install-fix.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ocamldoc
@@ -109,6 +109,9 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 
 
 %changelog 
+* Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-3
+- Renamed patch to have '.patch' suffix
+
 * Thu Jan 22 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-2
 - Add Requires lines suggested by Anil Madhavapeddy
 - Update URL to use https rather than http

@@ -1,17 +1,12 @@
-%ifarch %{ocaml_native_compiler}
-%global native_compiler 1
-%else
-%global native_compiler 0
-%endif
 
 Name:           ocaml-uutf
 Version:        0.9.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Non-blocking streaming codec for UTF-8, UTF-16, UTF-16LE and UTF-16BE
 License:        BSD
 URL:            http://erratique.ch/software/uutf
 Source0:        https://github.com/dbuenzli/uutf/archive/v%{version}/uutf-%{version}.tar.gz
-Patch0:         uutf-enable-debug
+Patch0:         uutf-enable-debug.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ocamldoc
@@ -76,6 +71,10 @@ cp _build/src/*.cmxs ${DEST}
 %endif
 
 %changelog
+* Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-5
+- Rename patch to have '.patch' suffix
+- Remove unused define
+
 * Fri Jan 16 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-4
 - Minor fixes for Fedora
 
