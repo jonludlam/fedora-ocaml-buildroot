@@ -6,7 +6,7 @@
 
 Name:           ocaml-re
 Version:        1.2.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A regular expression library for OCaml
 
 License:        LGPLv2 with exceptions
@@ -29,7 +29,7 @@ library.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for
@@ -71,6 +71,9 @@ make install
 %{_libdir}/ocaml/re/*.mli
 
 %changelog 
+* Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-4
+- Fix missing 'isa' macro in devel depends
+
 * Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-3
 - Change patch filename to have .patch suffix
 - Remove whitespace
