@@ -1,11 +1,12 @@
 
 Name:           ocaml-uutf
 Version:        0.9.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Non-blocking streaming codec for UTF-8, UTF-16, UTF-16LE and UTF-16BE
 License:        BSD
 URL:            http://erratique.ch/software/uutf
 Source0:        https://github.com/dbuenzli/uutf/archive/v%{version}/uutf-%{version}.tar.gz
+Source1:        uutf.license
 Patch0:         uutf-enable-debug.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
@@ -26,7 +27,7 @@ BSD license.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for
@@ -35,6 +36,7 @@ developing applications that use %{name}.
 %prep
 %setup -q -n uutf-%{version}
 %patch0 -p1
+cp -p %SOURCE1 ./LICENSE
 
 %build
 ./pkg/pkg-git
@@ -54,6 +56,7 @@ cp _build/src/*.cmxs ${DEST}
 %files
 %doc CHANGES.md
 %doc README.md
+%doc LICENSE
 %{_libdir}/ocaml/uutf
 %exclude %{_libdir}/ocaml/uutf/*.mli
 %ifarch %{ocaml_native_compiler}
@@ -71,6 +74,10 @@ cp _build/src/*.cmxs ${DEST}
 %endif
 
 %changelog
+* Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-6
+- Include a LICENSE file extracted from the source
+- Fix missing isa macro from devel Requires line
+
 * Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-5
 - Rename patch to have '.patch' suffix
 - Remove unused define
