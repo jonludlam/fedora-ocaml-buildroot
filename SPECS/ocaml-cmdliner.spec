@@ -46,7 +46,7 @@ developing applications that use %{name}.
 %prep
 %setup -q -n cmdliner-%{version}
 %patch0 -p1
-cp %SOURCE1 ./LICENSE
+cp -p %SOURCE1 ./LICENSE
 
 %build
 ocaml pkg/git.ml
