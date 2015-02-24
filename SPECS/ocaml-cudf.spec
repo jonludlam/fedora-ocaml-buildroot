@@ -8,7 +8,7 @@
 
 Name:           ocaml-cudf
 Version:        0.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Common Upgradeability Description Format (CUDF) library
 
 License:        LGPLv3 with exceptions
@@ -33,7 +33,7 @@ package-based GNU/Linux distributions.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description    devel
 %description devel
@@ -69,6 +69,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/ocaml/cudf/*.o
 
 %files
 %doc README
+%doc COPYING
 %{_libdir}/ocaml/cudf
 %if %{native_compiler}
 %exclude %{_libdir}/ocaml/cudf/*.a
@@ -87,6 +88,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/ocaml/cudf/*.o
 
 
 %changelog 
+* Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.7-3
+- Add COPYING doc and fix missing isa macro from devel Requires
+
 * Wed Jan 21 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.7-2
 - Remove .o files from package
 
