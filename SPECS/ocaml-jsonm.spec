@@ -1,10 +1,11 @@
 Name:           ocaml-jsonm
 Version:        0.9.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Non-blocking streaming JSON codec for OCaml
 License:        BSD
 URL:            http://erratique.ch/software/jsonm
 Source0:        https://github.com/dbuenzli/jsonm/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        jsonm.license
 Patch0:         ocaml-jsonm-setup.ml.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
@@ -24,7 +25,7 @@ distributed under the BSD license.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       ocaml-uutf-devel
 
 %description    devel
@@ -34,6 +35,7 @@ developing applications that use %{name}.
 %prep
 %setup -q -n jsonm-%{version}
 %patch0 -p1
+cp -p %SOURCE1 ./LICENSE
 
 %build
 ocaml setup.ml -configure --prefix %{_prefix} \
@@ -59,6 +61,7 @@ rm %{buildroot}/%{_bindir}/ocamltweets
 %files
 %doc CHANGES
 %doc README
+%doc LICENSE
 %{_libdir}/ocaml/jsonm
 %exclude %{_libdir}/ocaml/jsonm/*.mli
 %ifarch %{ocaml_native_compiler}
@@ -77,6 +80,10 @@ rm %{buildroot}/%{_bindir}/ocamltweets
 %endif
 
 %changelog
+* Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.1-4
+- Include a LICENSE extracted from the source
+- Added a missing isa macro from devel package Requires
+
 * Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.1-3
 - Remove unused define
 - Sanitised the description
