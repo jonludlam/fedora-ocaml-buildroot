@@ -16,11 +16,12 @@
 
 Name:           ocaml-cmdliner
 Version:        0.9.6
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Declarative definition of command-line interfaces for OCaml
 License:        BSD
 URL:            http://erratique.ch/software/cmdliner
 Source0:        http://erratique.ch/software/cmdliner/releases/cmdliner-%{version}.tbz
+Source1:        cmdliner.license
 Patch0:         cmdliner-enable-debug
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
@@ -45,6 +46,7 @@ developing applications that use %{name}.
 %prep
 %setup -q -n cmdliner-%{version}
 %patch0 -p1
+cp %SOURCE1 ./LICENSE
 
 %build
 ocaml pkg/git.ml
@@ -64,6 +66,7 @@ cp _build/src/*.cmxs %{buildroot}/%{_libdir}/ocaml/cmdliner
 # Nb. the following line will pick up the .cmxs if natdynlink is true.
 %doc CHANGES.md
 %doc README.md
+%doc LICENSE
 %{_libdir}/ocaml/cmdliner
 %if %{native_compiler}
 %exclude %{_libdir}/ocaml/cmdliner/*.a
@@ -81,6 +84,9 @@ cp _build/src/*.cmxs %{buildroot}/%{_libdir}/ocaml/cmdliner
 %{_libdir}/ocaml/cmdliner/*.mli
 
 %changelog
+* Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.6-3
+- Add a license file extracted from the source
+
 * Thu Dec 11 2014 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.6-2
 - Fix debuginfo package
 
