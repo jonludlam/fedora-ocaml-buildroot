@@ -6,7 +6,7 @@
 
 Name:           opam
 Version:        1.2.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A source-based package manager for OCaml
 License:        LGPLv3 with exceptions
 URL:            https://opam.ocaml.org/
@@ -50,8 +50,8 @@ This package contains the runtime components of the core OPAM
 libraries for use in other OCaml programs.
 
 %package -n ocaml-opam-lib-devel
-Summary: Development files for %{name}
-Requires: %{name} = %{version}-%{release}
+Summary: Development files for ocaml-opam-lib
+Requires: ocaml-opam-lib%{?_isa} = %{version}-%{release}
 
 %description -n ocaml-opam-lib-devel
 OPAM is a source-based package manager for OCaml. It supports multiple
@@ -109,6 +109,9 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 
 
 %changelog 
+* Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-4
+- Include cmxs files in ocaml-opam-lib
+
 * Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-3
 - Renamed patch to have '.patch' suffix
 
