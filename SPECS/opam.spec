@@ -111,6 +111,7 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 %changelog 
 * Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-4
 - Include cmxs files in ocaml-opam-lib
+- Fix incorrect dependency in the ocaml-opam-lib-devel package
 
 * Sat Jan 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-3
 - Renamed patch to have '.patch' suffix
