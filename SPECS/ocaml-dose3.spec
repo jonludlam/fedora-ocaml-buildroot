@@ -6,13 +6,14 @@
 
 Name:           ocaml-dose3
 Version:        3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Dose3 is a framework for managing distribution packages and their dependencies
 License:        LGPLv3 with exceptions
 URL:            http://www.mancoosi.org/software/
 Source0:        https://gforge.inria.fr/frs/download.php/file/34277/dose3-3.3.tar.gz
 Patch0:         dose-fix-inst.patch
 Patch1:         dose-rpm-buildfix.patch
+Patch2:         dose-ocamlgraph-1.8.6.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-camlp4-devel
 BuildRequires:  ocaml-findlib
@@ -20,7 +21,7 @@ BuildRequires:  ocaml-ocamldoc
 BuildRequires:  ocaml-ounit
 BuildRequires:  ocaml-extlib-devel
 BuildRequires:  ocaml-re-devel
-BuildRequires:  ocaml-ocamlgraph-devel
+BuildRequires:  ocaml-ocamlgraph-devel >= 1.8.6
 BuildRequires:  ocaml-cudf-devel
 BuildRequires:  ocaml-expat-devel
 BuildRequires:  ocaml-zip-devel
@@ -53,6 +54,7 @@ developing applications that use %{name}.
 %setup -q -n dose3-%{version}
 %patch0
 %patch1
+%patch2
 %configure --with-zip --with-ocamlgraph --with-curl --with-xml --with-oUnit --with-rpm4
 
 %build
@@ -86,6 +88,9 @@ rm -rf $RPM_BUILD_ROOT/%{_bindir}/*
 %{_libdir}/ocaml/stublibs/dllrpm4_stubs.so.owner
 
 %changelog
+* Sun Mar 29 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 3.3-2
+- Compatibility fix for ocamlgraph-1.8.6
+
 * Mon Jan 19 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 3.3-1
 - Initial package
 

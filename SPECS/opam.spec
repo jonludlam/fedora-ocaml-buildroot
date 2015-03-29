@@ -5,13 +5,12 @@
 %endif
 
 Name:           opam
-Version:        1.2.0
-Release:        4%{?dist}
+Version:        1.2.1
+Release:        1%{?dist}
 Summary:        A source-based package manager for OCaml
 License:        LGPLv3 with exceptions
 URL:            https://opam.ocaml.org/
-Source0:        https://github.com/ocaml/opam/archive/1.2.0/opam-1.2.0.tar.gz
-Patch0:         opam-lib-install-fix.patch
+Source0:        https://github.com/ocaml/opam/archive/1.2.1/opam-1.2.1.tar.gz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ocamldoc
@@ -65,7 +64,6 @@ programs.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
@@ -91,6 +89,7 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 %{_mandir}/man1/opam*
 
 %files -n ocaml-opam-lib
+%doc LICENSE
 %{_libdir}/ocaml/opam-lib
 %if %{native_compiler}
 %exclude %{_libdir}/ocaml/opam-lib/*.a
@@ -109,6 +108,9 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 
 
 %changelog 
+* Sat Mar 28 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.1-1
+- New version from upstream
+
 * Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.0-4
 - Include cmxs files in ocaml-opam-lib
 - Fix incorrect dependency in the ocaml-opam-lib-devel package
