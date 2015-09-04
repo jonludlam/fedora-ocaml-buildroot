@@ -5,12 +5,12 @@
 %endif
 
 Name:           opam
-Version:        1.2.1
+Version:        1.2.2
 Release:        1%{?dist}
 Summary:        A source-based package manager for OCaml
 License:        LGPLv3 with exceptions
 URL:            https://opam.ocaml.org/
-Source0:        https://github.com/ocaml/opam/archive/1.2.1/opam-1.2.1.tar.gz
+Source0:        https://github.com/ocaml/opam/archive/%{version}/opam-%{version}.tar.gz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ocamldoc
@@ -108,6 +108,9 @@ rm $RPM_BUILD_ROOT%{_bindir}/opam-admin.top
 
 
 %changelog 
+* Thu Sep 3 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-1
+- New upstream version
+
 * Sat Mar 28 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.1-1
 - New version from upstream
 
