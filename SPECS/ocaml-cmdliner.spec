@@ -15,8 +15,8 @@
 %endif
 
 Name:           ocaml-cmdliner
-Version:        0.9.6
-Release:        3%{?dist}
+Version:        0.9.7
+Release:        1%{?dist}
 Summary:        Declarative definition of command-line interfaces for OCaml
 License:        BSD
 URL:            http://erratique.ch/software/cmdliner
@@ -84,6 +84,9 @@ cp _build/src/*.cmxs %{buildroot}/%{_libdir}/ocaml/cmdliner
 %{_libdir}/ocaml/cmdliner/*.mli
 
 %changelog
+* Thu Sep 3 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.7-1
+- New upstream release
+
 * Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.6-3
 - Add a license file extracted from the source
 
