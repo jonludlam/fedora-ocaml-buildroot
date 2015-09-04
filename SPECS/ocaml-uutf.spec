@@ -1,7 +1,19 @@
+%ifarch %{ocaml_native_compiler}
+%global native_option true
+%else
+%global native_option false
+%endif
+
+%ifarch %{ocaml_natdynlink}
+%global natdynlink_option true
+%else
+%global natdynlink_option false
+%endif
+
 
 Name:           ocaml-uutf
-Version:        0.9.3
-Release:        6%{?dist}
+Version:        0.9.4
+Release:        1%{?dist}
 Summary:        Non-blocking streaming codec for UTF-8, UTF-16, UTF-16LE and UTF-16BE
 License:        BSD
 URL:            http://erratique.ch/software/uutf
@@ -11,6 +23,7 @@ Patch0:         uutf-enable-debug.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
 BuildRequires:  ocaml-ocamldoc
+BuildRequires:  ocaml-cmdliner-devel
 
 %description
 Uutf is an non-blocking streaming Unicode codec for OCaml to decode and
@@ -39,8 +52,9 @@ developing applications that use %{name}.
 cp -p %SOURCE1 ./LICENSE
 
 %build
-./pkg/pkg-git
-./pkg/build true
+ocaml pkg/git.ml
+ocaml pkg/build.ml "native=%{native_option}" \
+  "native-dynlink=%{natdynlink_option}" "cmdliner=true"
 
 %install
 mkdir -p %{buildroot}%{_libdir}/ocaml/uutf
@@ -74,6 +88,9 @@ cp _build/src/*.cmxs ${DEST}
 %endif
 
 %changelog
+* Thu Sep 3 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.4-1
+- New upstream release
+
 * Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.9.3-6
 - Include a LICENSE file extracted from the source
 - Fix missing isa macro from devel Requires line

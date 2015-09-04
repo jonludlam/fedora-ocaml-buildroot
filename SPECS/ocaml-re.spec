@@ -5,15 +5,14 @@
 %endif
 
 Name:           ocaml-re
-Version:        1.2.2
-Release:        4%{?dist}
+Version:        1.4.1
+Release:        1%{?dist}
 Summary:        A regular expression library for OCaml
 
 License:        LGPLv2 with exceptions
 URL:            https://github.com/ocaml/ocaml-re
 Source0:        https://github.com/ocaml/%{name}/archive/ocaml-re-%{version}/ocaml-re-%{version}.tar.gz
 # Without this, the re_pcre.ml file was installed. The problem is already fixed in master.
-Patch0:         ocaml-re-add-pcre-mli.patch
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
@@ -37,11 +36,11 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n ocaml-re-ocaml-re-%{version}
-%patch0 -p1
 
 %build
 ocaml setup.ml -configure --destdir $RPM_BUILD_ROOT
 make
+make doc
 
 %install
 export OCAMLFIND_DESTDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml
@@ -70,7 +69,11 @@ make install
 %endif
 %{_libdir}/ocaml/re/*.mli
 
-%changelog 
+%changelog
+* Thu Sep 3 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.4.1-1
+- New upstream release
+- Remove upstreamed patch
+
 * Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 1.2.2-4
 - Fix missing 'isa' macro in devel depends
 
