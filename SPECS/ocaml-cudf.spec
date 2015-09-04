@@ -7,13 +7,13 @@
 %global debug_package %{nil}
 
 Name:           ocaml-cudf
-Version:        0.7
-Release:        3%{?dist}
+Version:        0.8
+Release:        1%{?dist}
 Summary:        Common Upgradeability Description Format (CUDF) library
 
 License:        LGPLv3 with exceptions
 URL:            http://www.mancoosi.org/cudf/
-Source0:        https://gforge.inria.fr/frs/download.php/file/33593/cudf-0.7.tar.gz
+Source0:        https://gforge.inria.fr/frs/download.php/file/34659/cudf-0.8.tar.gz
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-findlib
@@ -87,7 +87,10 @@ rm $RPM_BUILD_ROOT%{_libdir}/ocaml/cudf/*.o
 %{_libdir}/ocaml/cudf/*.mli
 
 
-%changelog 
+%changelog
+* Thu Sep 3 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.8-1
+- New upstream release
+
 * Tue Feb 24 2015 Jon Ludlam <jonathan.ludlam@citrix.com> - 0.7-3
 - Add COPYING doc and fix missing isa macro from devel Requires
 
